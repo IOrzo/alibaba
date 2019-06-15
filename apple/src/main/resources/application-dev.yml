@@ -1,0 +1,10 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.214.128:8848
+
+nacos:
+  config:
+    app: apple
+    version: 1.0.0

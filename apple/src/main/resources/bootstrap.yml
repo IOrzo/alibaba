@@ -1,0 +1,10 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: apple
+  cloud:
+    nacos:
+      config:
+        file-extension: yml
+        server-addr: 192.168.214.128:8848
