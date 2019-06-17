@@ -1,0 +1,29 @@
+server:
+  port: 18000
+spring:
+  application:
+    name: zuul
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.214.128:8848
+  data:
+    elasticsearch:
+      cluster-nodes: 192.168.214.128:9300
+      cluster-name: modnim_node
+zuul:
+  ignoredServices: '*'
+  host:
+    connect-timeout-millis: 30000
+    socket-timeout-millis: 60000
+  routes:
+    moden-asset:
+      path: /apple/**
+      serviceId: apple
+      stripPrefix: true
+      sensitiveHeaders: Cookie,Set-Cookie
+    moden-deal:
+      path: /banana/**
+      serviceId: banana
+      stripPrefix: true
+      sensitiveHeaders: Cookie,Set-Cookie

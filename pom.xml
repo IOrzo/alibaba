@@ -16,4 +16,11 @@
     <version>1.0.0</version>
 
     <name>alibaba</name>
+
+    <modules>
+        <module>apple</module>
+        <module>banana</module>
+        <module>gateway</module>
+        <module>zuul</module>
+    </modules>
 </project>
