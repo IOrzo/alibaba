@@ -9,6 +9,7 @@ import com.sixtofly.zuul.log.RequestLog;
 import com.sixtofly.zuul.repository.RequestLogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,7 +21,8 @@ import java.util.Date;
  * @author Xie Yuan Bing
  * @date 2019-06-17 17:50
  **/
-public class RequestLogPostFilter extends ZuulFilter {
+@Component
+public class RequestLogResponsePostFilter extends ZuulFilter {
 
     @Autowired
     private RequestLogRepository requestLogRepository;
@@ -52,14 +54,12 @@ public class RequestLogPostFilter extends ZuulFilter {
         HttpServletResponse response = context.getResponse();
         RequestLog requestLog = new RequestLog();
         requestLog.initRequestInfo(request, "alibaba");
-        String result = IoUtil.read(context.getResponseDataStream(), Charset.forName("UTF-8"));
-        context.setResponseDataStream(new ByteArrayInputStream(result.getBytes()));
-        context.set("responseText", result);
+//        context.setResponseDataStream(new ByteArrayInputStream(result.getBytes()));
         context.set("Content-Length", context.getOriginContentLength());
         context.set("httpStatus", context.getResponse().getStatus());
         Date startDate = new Date(Long.valueOf(context.get("startTime").toString()));
         requestLog.setOccurrenceTime(startDate);
-        requestLog.setResponseText("" + context.get("responseText"));
+        requestLog.setResponseText(context.get("result").toString());
         requestLog.setResponseTime(System.currentTimeMillis() - startDate.getTime());
         requestLog.setUrl(context.get("requestURI") + "");
         requestLog.setThrowable("");

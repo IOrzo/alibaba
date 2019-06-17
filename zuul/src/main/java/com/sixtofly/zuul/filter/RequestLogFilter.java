@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  * @date 2019-06-16 16:32
  * @description
  */
-@Component
+//@Component
 public class RequestLogFilter {
 
     @Autowired
