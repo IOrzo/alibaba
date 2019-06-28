@@ -1,12 +1,6 @@
 package com.sixtofly.zuul.log;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
-import io.netty.handler.codec.http.HttpUtil;
-import io.netty.util.internal.StringUtil;
 import lombok.Data;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.cloud.netflix.zuul.util.RequestUtils;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;

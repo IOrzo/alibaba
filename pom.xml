@@ -17,10 +17,35 @@
 
     <name>alibaba</name>
 
+    <properties>
+        <spring.cloud.version>Finchley.RELEASE</spring.cloud.version>
+    </properties>
+
     <modules>
         <module>apple</module>
         <module>banana</module>
         <module>gateway</module>
         <module>zuul</module>
+        <module>common</module>
     </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.sixtofly</groupId>
+            <artifactId>common</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring.cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>
